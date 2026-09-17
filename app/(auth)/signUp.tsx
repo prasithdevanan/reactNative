@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, TextInput, View } from 'react-native';
 
 export default function signUp() {
   return (
@@ -9,10 +9,6 @@ export default function signUp() {
     >
       <View className="flex-1 justify-center items-center ">
         <Text className="text-2xl font-bold">signUp</Text>
-        <Text className="text-lg">signUp</Text>
-        <Text className="text-lg">signUp</Text>
-        <Text className="text-lg">signUp</Text>
-   
       </View>
 
     </ScrollView>

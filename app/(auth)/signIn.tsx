@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, TextInput, View } from 'react-native';
 
 export default function signIn() {
   return (
@@ -11,7 +11,8 @@ export default function signIn() {
         <Text className="text-2xl font-bold">signIn</Text>
         <Text className="text-lg">signIn</Text>
         <Text className="text-lg">signIn</Text>
-   
+        <Text className="text-lg">signIn</Text>
+        <TextInput placeholder="Type something here" placeholderTextColor="#999"/>
       </View>
 
     </ScrollView>

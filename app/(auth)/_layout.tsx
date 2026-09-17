@@ -6,7 +6,6 @@ export default function AuthLayout() {
 
     if (!isLoaded) return null;
 
-    if (!isSignedIn) return <Redirect href="/signUp" />;
-    if (isSignedIn) return <Redirect href="/" />;
-    return <Stack screenOptions={{ headerShown: false }} />;
+    if (isSignedIn) return <Redirect href="/(root)/(tabs)" />;
+    return <Stack screenOptions={{ headerShown: false }} initialRouteName="signUp"/>;
 }
