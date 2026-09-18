@@ -4,9 +4,9 @@ import { Redirect } from "expo-router";
 export default function Index() {
   const { isLoaded, isSignedIn } = useAuth();
 
-  if(!isLoaded) return null;
+  if (!isLoaded) return null;
 
-  if(isSignedIn) return <Redirect href="/(root)/(tabs)" />;
+  if (isSignedIn) return <Redirect href="/(root)/(tabs)" />;
   // return (
   //   // <SafeAreaView className="flex-1 px-4">
   //   //   <View>
@@ -33,5 +33,7 @@ export default function Index() {
   //   //   </View>
   //   // </SafeAreaView>
   // );
-  return <Redirect href="/signUp" />
+  return (
+    <Redirect href="/signUp" />
+  )
 }
