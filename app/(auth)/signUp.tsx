@@ -207,7 +207,7 @@ export default function signUp() {
             <ActivityIndicator size="small" color="#fff" />
           ) : (
             <Text className="text-white font-bold">
-              Submit
+              Sign Up
             </Text>
           )}
         </TouchableOpacity>

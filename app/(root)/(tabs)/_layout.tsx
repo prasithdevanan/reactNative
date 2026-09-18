@@ -3,11 +3,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TabLayout() {
     return (
-        <SafeAreaView className="flex-1">
-            <NativeTabs>
-                <NativeTabs.Trigger name="index">
+        <SafeAreaView className="flex-1" edges={["top"]}>
+            <NativeTabs tintColor={"blue"} backgroundColor={"#CBDBFF"} >
+                <NativeTabs.Trigger name="index" >
                     <Label>Home</Label>
-                    <Icon sf="house.fill" drawable="custom_android_drawable" />
+                    <Icon sf="house.fill" drawable="custom_android_drawable" selectedColor="#4CAF50"/>
                 </NativeTabs.Trigger>
                 <NativeTabs.Trigger name="settings">
                     <Icon sf="gear" drawable="custom_settings_drawable" />
