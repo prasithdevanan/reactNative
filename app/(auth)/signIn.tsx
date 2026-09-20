@@ -82,7 +82,7 @@ export default function signIn() {
 
 
   if (signIn.status === "needs_second_factor") {
-
+console.log(signIn.status);
 
     return (
       <>
