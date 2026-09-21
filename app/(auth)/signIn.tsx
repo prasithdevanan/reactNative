@@ -81,8 +81,8 @@ export default function signIn() {
   }
 
 
-  if (signIn.status === "needs_second_factor") {
-console.log(signIn.status);
+  if (signIn.status === "needs_second_factor" || signIn.status === "needs_client_trust") {
+    console.log(signIn.status);
 
     return (
       <>
