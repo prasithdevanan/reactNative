@@ -1,9 +1,11 @@
+import Features from '@/component/features';
 import { supabase } from '@/lib/supabase';
 import { Property } from '@/types';
 import { useUser } from '@clerk/expo';
+import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useCallback, useState } from 'react';
-import { FlatList, Image, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
@@ -50,6 +52,7 @@ export default function HomeScreen() {
         contentContainerStyle={{ padding: 20 }}
         ListHeaderComponent={
           <View>
+
             {/* //Logo */}
             <View className='flex-row items-center justify-between mb-3'>
               <View>
@@ -60,13 +63,45 @@ export default function HomeScreen() {
                 <Text className='font-bold'>{user?.firstName}</Text>
               </Text>
             </View>
+
+
             {/* //Search */}
-            <TextInput 
-            placeholder='Search' 
-            placeholderTextColor='#666' 
-            className='bg-gray-200 p-3 rounded-md'
-            onPressIn={() => router.push("/(root)/(tabs)/search")}
-            /> 
+            <TouchableOpacity onPress={() => router.push("/(root)/(tabs)/search")} className='flex-row items-center space-x-2 bg-gray-200 border-gray-300 border-1 p-3 rounded-xl'>
+              <Ionicons name='search' size={18} color='gray' className="mr-2" />
+              <Text className='flex-1 text-gray-400'>Search properties, cities...</Text>
+              {/* //Filter */}
+              <TouchableOpacity
+                onPress={() => router.push('/(root)/(tabs)/search?Filter=true')}
+                className='bg-blue-600 w-8 h-8 flex items-center justify-center rounded-xl'
+              >
+                <Ionicons
+                  name="options-outline"
+                  size={16}
+                  color='white'
+                />
+              </TouchableOpacity>
+            </TouchableOpacity>
+
+            {/* //featured */}
+            <View>
+              <Text className='text-2xl font-bold mt-4'>Featured</Text>
+              {
+                loading ? (
+                  <ActivityIndicator size='small' color='blue' />
+                ) : (
+                  <FlatList
+                    data={features}
+                    showsVerticalScrollIndicator={false}
+                    horizontal
+                    contentContainerStyle={{ paddingHorizontal: 20 }}
+                    keyExtractor={(item) => item.id}
+                    renderItem={({ item }) => (
+                      <Features item={item} />
+                    )}
+                  />
+                )
+              }
+            </View>
             <Text className='text-2xl font-bold'>Recommended</Text>
             <Text className='text-gray-400'>Recommended for you</Text>
           </View>
