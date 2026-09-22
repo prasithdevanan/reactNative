@@ -8,7 +8,7 @@ import { Property } from '../types';
 export default function PropertyCard({ item, onUnsave, showSave = false }: { item: Property, onUnsave?: () => void, showSave?: boolean }) {
     const router = useRouter();
 
-    const isSaved = true;
+    const isSaved = false; // Replace with your logic to determine if the property is saved
 
     return (
 
