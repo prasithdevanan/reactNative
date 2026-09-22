@@ -7,6 +7,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useCallback, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, RefreshControl, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import PropertyCard from '../../../components/Property';
 
 export default function HomeScreen() {
 
@@ -46,7 +47,6 @@ export default function HomeScreen() {
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
     try {
-      console.log("refreshing");
       await featchData();
 
     } catch (error) {
@@ -114,6 +114,7 @@ export default function HomeScreen() {
                   <FlatList
                     data={features}
                     showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
                     horizontal
                     contentContainerStyle={{ paddingHorizontal: 10 }}
                     keyExtractor={(item) => item.id}
@@ -125,15 +126,23 @@ export default function HomeScreen() {
                 )
               }
             </View>
-            <Text className='text-2xl font-bold'>Recommended</Text>
-            <Text className='text-gray-400'>Recommended for you</Text>
+
+            <View className="mb-4">
+              <Text className="text-2xl font-bold text-gray-900">
+                Recommended
+              </Text>
+
+              <Text className="text-sm text-gray-500 mt-1">
+                Recommended for you
+              </Text>
+            </View>
+
+
           </View>
         }
         renderItem={({ item }) => (
-          <View className='px-4'>
-            <Image source={{ uri: item.images[0] }} className='w-full h-52' />
-            <Text>{item.title}</Text>
-            <Text>{item.description}</Text>
+          <View>
+            <PropertyCard item={item} />
           </View>
 
         )}

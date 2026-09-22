@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 function AndroidTabs() {
     const isAdmin = useUserStore((state) => state.isAdmin);
+  
     return (
         <Tabs screenOptions={{ headerShown: false }}>
             <Tabs.Screen
@@ -51,8 +52,8 @@ function AndroidTabs() {
                 }}
             />
 
-            {
-                isAdmin && <Tabs.Screen
+            {isAdmin && (
+                <Tabs.Screen
                     name="create"
                     options={{
                         title: "Create",
@@ -65,7 +66,7 @@ function AndroidTabs() {
                         ),
                     }}
                 />
-            }
+            )}
 
             <Tabs.Screen
                 name="profile"

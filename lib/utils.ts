@@ -9,5 +9,5 @@ export const formatPrice = (price: number): string => {
         return `\u20B9${lakhs} L`;
     }
 
-    return `\u20B9${price.toLocaleString()}`;
+    return `\u20B9${price.toLocaleString()} `;
 }

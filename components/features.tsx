@@ -7,7 +7,7 @@ import { formatPrice } from '../lib/utils';
 
 export default function Features({ item }: { item: Property }) {
     const router = useRouter();
-    console.log(item.images[0]);
+
     return (
         <TouchableOpacity className='relative w-72 mr-2 overflow-hidden rounded-xl bg-white'
             onPress={() => router.push({
@@ -47,7 +47,23 @@ export default function Features({ item }: { item: Property }) {
                     <Ionicons name="location-outline" size={16} color="gray" />
                     <Text className='text-gray-500 ml-1 text-sm'>{item?.address}, {item?.city}</Text>
                 </View>
-                <Text className='text-lg font-bold pl-2 items-end flex-1 text-blue-600'>{formatPrice(item?.price)}</Text>
+
+                <View className='flex-row items-center justify-between'>
+                    <Text className='text-lg font-bold pl-2 items-end flex-1 text-blue-600'>{formatPrice(item?.price)}</Text>
+
+                    <View className='flex-row items-center gap-3'>
+                        <View className='flex-row items-center gap-1'>
+                            <Ionicons name="bed-outline" size={12} color="gray" />
+                            <Text className='text-gray-500 ml-1 text-sm'>{item?.bedrooms}</Text>
+                        </View>
+
+                        <View className='flex-row items-center gap-1'>
+                            <Ionicons name="water-outline" size={12} color="gray" />
+                            <Text className='text-gray-500 ml-1 text-sm'>{item?.bathrooms}</Text>
+                        </View>
+                    </View>
+                </View>
+
             </View>
         </TouchableOpacity>
     )
