@@ -75,7 +75,7 @@ export default function PropertyCard({ item, onUnsave, showSave = false }: { ite
                         </Text>
                     </View>
 
-                    <View className="flex-row items-center">
+                    <View className="flex-row items-center mr-4">
                         <Ionicons
                             name="water-outline"
                             size={15}
@@ -84,6 +84,17 @@ export default function PropertyCard({ item, onUnsave, showSave = false }: { ite
 
                         <Text className="ml-1 text-xs text-gray-500">
                             {item?.bathrooms} Baths
+                        </Text>
+                    </View>
+                    <View className="flex-row items-center">
+                        <Ionicons
+                            name="home-outline"
+                            size={15}
+                            color="#9CA3AF"
+                        />
+
+                        <Text className="ml-1 text-xs text-gray-500">
+                            {item?.area_sqft} Baths
                         </Text>
                     </View>
                 </View>
