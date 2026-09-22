@@ -1,11 +1,11 @@
-import Features from '@/component/features';
+import Features from '@/components/features';
 import { supabase } from '@/lib/supabase';
 import { Property } from '@/types';
 import { useUser } from '@clerk/expo';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import React, { useCallback, useState } from 'react';
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, RefreshControl, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
@@ -16,6 +16,7 @@ export default function HomeScreen() {
   const [features, setFeatures] = useState<Property[]>([]);
   const [recommended, setRecommended] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   // console.log(user, "features", features, "recommended", recommended);
 
@@ -41,6 +42,21 @@ export default function HomeScreen() {
     }, []),
   )
 
+  ///control for the refersh
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      console.log("refreshing");
+      await featchData();
+
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setRefreshing(false);
+    }
+  }, []);
+
+
 
 
   return (
@@ -50,6 +66,12 @@ export default function HomeScreen() {
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ padding: 20 }}
+        refreshControl={
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={onRefresh}
+          />
+        }
         ListHeaderComponent={
           <View>
 
@@ -87,14 +109,15 @@ export default function HomeScreen() {
               <Text className='text-2xl font-bold mt-4'>Featured</Text>
               {
                 loading ? (
-                  <ActivityIndicator size='small' color='blue' />
+                  <ActivityIndicator size='small' color='blue' className='h-44' />
                 ) : (
                   <FlatList
                     data={features}
                     showsVerticalScrollIndicator={false}
                     horizontal
-                    contentContainerStyle={{ paddingHorizontal: 20 }}
+                    contentContainerStyle={{ paddingHorizontal: 10 }}
                     keyExtractor={(item) => item.id}
+                    className='pb-4 pt-2'
                     renderItem={({ item }) => (
                       <Features item={item} />
                     )}
