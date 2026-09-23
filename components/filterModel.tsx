@@ -192,6 +192,12 @@ export default function filterModel({ visable, onClose }: {
                                 })
                             }
                         </View>
+                        <TouchableOpacity
+                            onPress={handleApply}
+                            className="bg-blue-600 py-3 rounded-lg items-center justify-center mt-6"
+                        >
+                            <Text className="text-white text-base font-semibold">Apply</Text>
+                        </TouchableOpacity>
                     </ScrollView>
                 </View>
             </View>
