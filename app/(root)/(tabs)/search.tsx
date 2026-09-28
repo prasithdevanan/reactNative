@@ -241,6 +241,13 @@ export default function search() {
                 paddingTop: 20,
                 paddingHorizontal: 20,
               }}
+              ListEmptyComponent={
+            
+                  <View className="flex-1 justify-center items-center font-medium">
+                    <Text className='flex-1 item-center justify-center font-bold text-gray-500'>No Properties Found</Text>
+                  </View>
+              
+              }
             // refreshControl={<RefreshControl refreshing={loading} onRefresh={onRefresh} />}
             />}
       </View>
