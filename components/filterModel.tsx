@@ -96,7 +96,7 @@ export default function filterModel({ visable, onClose }: {
 
                         <Text className="text-2xl font-bold">Filter</Text>
                         <TouchableOpacity onPress={handleReset}>
-                            <Text className="text-blue-600 font-medium text-sm">Reset</Text>
+                            <Text className="text-blue-600 font-medium text-sm">Reset Now</Text>
                         </TouchableOpacity>
                     </View>
 
